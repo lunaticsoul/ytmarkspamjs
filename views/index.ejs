@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://accounts.google.com/gsi/client"></script>
+</head>
+<body>
+    <button onclick="getToken()">Get Token</button>
+    <script>
+        let accessToken;
+        const client = google.accounts.oauth2.initTokenClient({
+            client_id: "<%= clientId %>",
+            scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+            callback: async (tokenResponse) => {
+                accessToken = tokenResponse.access_token;
+                console.log("Access Token:", accessToken);
+                await sendTokenToServer(accessToken);
+            },
+        });
+
+        async function sendTokenToServer(token) {
+            const res = await fetch('/api/take-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token })
+            });
+        }
+
+        function getToken() {
+            client.requestAccessToken();
+        }
+    </script>
+</body>
+</html>

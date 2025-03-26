@@ -1,0 +1,12 @@
+{
+    "clientId": "[CLIENT_ID].apps.googleusercontent.com",
+    "port": 20004,
+    "channel": "UC2[CHANNEL_ID]",
+    "map": {
+        "m": "𝐌, 𝑀, 𝙈, 𝘔",
+        "a" : "𝐀, 𝘈, 𝐴, А, 𝘼",
+        "x": "𝙓, 𝑋, 𝐗, 𝘟",
+        "3":  "𝟹, 𝟯, 𝟥"
+    },
+    "words": ["max33"]
+}
